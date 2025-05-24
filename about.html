@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh">
+
+<!-- 在<head>里最前面加 -->
+<script>
+    (function () {
+        var lang = localStorage.getItem('lang') || 'zh';
+        if (lang === 'en') {
+            document.documentElement.setAttribute('lang', 'en');
+            document.body && (document.body.style.visibility = 'hidden');
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.setLang) setLang('en');
+            });
+        } else {
+            document.documentElement.setAttribute('lang', 'zh');
+            document.body && (document.body.style.visibility = 'hidden');
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.setLang) setLang('zh');
+            });
+        }
+    })();
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我们 - 祥盈金属制品</title>
+    <title>关于我们 - 华实科技金属制品</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
+<body style="visibility:hidden">
     <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="https://placehold.co/120x40/0056b3/ffffff?text=" alt="祥盈金属制品" height="40">
-            </a>
+            <!-- <a class="navbar-brand" href="index.html">
+                <img src="https://placehold.co/120x40/0056b3/ffffff?text=" alt="华实科技金属制品" height="40">
+            </a> -->
+            <div class="navbar-brand" style="font-size: 20px; font-weight: bold;">华实科技</div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,8 +66,8 @@
     </nav>
 
     <!-- 关于我们banner -->
-    <div class="page-banner" style="background-image: url('https://placehold.co/1200x300/0056b3/ffffff?text="')>
-        <h1 data-lang="about-title">关于祥盈</h1>
+    <div class="page-banner" style="background-image: url('./pic/swiper1.png')">
+        <h1 data-lang="about-title">关于华实科技</h1>
     </div>
 
     <!-- 面包屑导航 -->
@@ -52,8 +75,8 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">您的位置: 首页</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">关于祥盈</li>
+                    <li class="breadcrumb-item"><a href="index.html" data-lang="breadcrumb-home">首页</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-lang="breadcrumb-about">关于华实科技</li>
                 </ol>
             </nav>
         </div>
@@ -63,24 +86,26 @@
     <div class="container my-5">
         <div class="row about-section">
             <div class="col-lg-6 mb-4">
-                <h2 class="mb-4 text-primary" data-lang="about-title">INTRODUCTION</h2>
-                <h3 class="mb-4" data-lang="about-company">东莞市祥盈金属制品有限公司</h3>
-                <p class="mb-4" data-lang="about-desc">东莞市祥盈金属制品有限公司成立于2009年，拥有多台：CNC加工中心，CNC加工中心，车铣复合加工中心，CNC数控车床，磨床，车床，钻床，线切割等设备，检测设备齐全。</p>
-                <p class="mb-4" data-lang="about-products">公司主营产品：精密零配件，夹具，治具，五金，模具，金属产品，机械设备等加工与制造。</p>
+                <h2 class="mb-4 text-primary" data-lang="about-intro-title">INTRODUCTION</h2>
+                <h3 class="mb-4" data-lang="about-company">珠海华实科技有限公司</h3>
+                <p class="mb-4" data-lang="about-desc">
+                    珠海华实集团成立于2005年12月,专注于智能钣金19年，为智能制造产业链中最具规模的智能装备企业，专业制造航天航空、汽车、游艇、医疗器械等新能源高端精密装备，为专精特新，高新技术企业，是珠海市智能制造创新基地，珠海市智能制造联合会副会长单位，同时也是珠海市金湾区工商联副主席单位。战略合作伙伴有:冠宇电池、光华科技、创智科技(智能AGV)、宝丰堂(供华为服务器外壳箱体)、珠海精实测控技术股份、中兴智能汽车、太阳鸟游艇等企业。2018年，我们积极响应国家"万企帮万村"的号召，于2018年8月至2021年8月对云南省怒江州贡山县茨开镇茨开村开展了为期3年的一对一帮扶服务并实现脱贫。2018-2020年荣获工商联"热心公益企业"，及"百企帮百村"突出贡献企业称号。
+                </p>
+                <!-- <p class="mb-4" data-lang="about-products">公司主营产品：精密零配件，夹具，治具，五金，模具，金属产品，机械设备等加工与制造。</p>
                 <p data-lang="about-industries">已合作行业：医疗设备，机器人，精密检测设备，激光设备，照明设备，自动化设备，LED设备，汽车行业，物流行业，电子元器件，汽动元器件，外贸机，机械设备等等行业。</p>
-                <p class="mt-4" data-lang="about-welcome">东莞市祥盈金属制品有限公司欢迎各界朋友来考察，参观，指导！</p>
-                <p data-lang="about-cooperation">诚邀各界广大人士来祥盈公司洽谈工作，洽谈合作！</p>
+                <p class="mt-4" data-lang="about-welcome">东莞市华实科技金属制品有限公司欢迎各界朋友来考察，参观，指导！</p>
+                <p data-lang="about-cooperation">诚邀各界广大人士来华实科技公司洽谈工作，洽谈合作！</p> -->
             </div>
             <div class="col-lg-6">
                 <div class="about-image">
-                    <img src="https://placehold.co/600x400/f8f9fa/0056b3?text=" alt="工厂照片" class="img-fluid rounded">
+                    <img src="./pic/swiper1.png" alt="工厂照片" class="img-fluid rounded">
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 企业形象 -->
-    <div class="bg-light py-5">
+    <!-- <div class="bg-light py-5">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">企业形象</h2>
@@ -120,6 +145,80 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+    <!-- 公司实力 -->
+    <div class="bg-light company-strength py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="strength-intro pe-lg-4">
+                        <h2 class="fw-bold mb-3" style="margin-bottom: 0;padding-bottom: 5px;"
+                            data-lang="strength-title">公司实力</h2>
+                        <!-- <h3 class="text-muted mb-4">PLANT EQUIPMENT</h3> -->
+                        <p class="mb-4" data-lang="strength-desc">为了确保满足客户的设计要求，先后引进先进的加工及测试设备</p>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="strength-gallery">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="gallery-item">
+                                    <img src="./pic/company/7.png" alt="公司环境" class="img-fluid rounded shadow">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="gallery-item">
+                                    <img src="./pic/company/8.png" alt="公司环境" class="img-fluid rounded shadow">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="gallery-item">
+                                    <img src="./pic/company/3.jpg" alt="公司环境" class="img-fluid rounded shadow">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="gallery-item">
+                                    <img src="./pic/company/4.jpg" alt="公司环境" class="img-fluid rounded shadow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="container my-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" data-lang="honor-title">荣誉证书</h2>
+                <!-- <p class="text-muted">专业的生产车间 先进的生产设备</p> -->
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="./pic/other/reward1.png" class="card-img-top" alt="证书" height="450">
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="./pic/other/reward2.png" class="card-img-top" alt="证书" height="450">
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="./pic/other/reward3.png" class="card-img-top" alt="证书" height="450">
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="./pic/other/reward4.png" class="card-img-top" alt="证书" height="450"
+                            style="object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 页脚 -->
@@ -128,16 +227,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <p data-lang="footer-contact">联系方式：</p>
-                    <p>Tel: 0769-22905373</p>
-                    <p>Email: dgxiangying@163.com</p>
-                    <p>网址: www.dgxyjs.com</p>
+                    <p data-lang="footer-tel">Tel: ***</p>
+                    <p data-lang="footer-email">Email: ***</p>
+                    <p data-lang="footer-website">网址: ***</p>
+                    <p data-lang="footer-address">地址：华实科技</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <p data-lang="footer-address">地址：东莞市东城区牛山外经工业园南兴路8号</p>
-                    <div class="mt-3">
-                        <img src="https://placehold.co/80x80/0056b3/ffffff?text=" alt="微信二维码" height="80" class="me-2">
-                        <img src="https://placehold.co/80x80/0056b3/ffffff?text=" alt="联系方式二维码" height="80">
-                    </div>
+
+                    <!-- <div class="mt-3">
+                    <img src="https://placehold.co/80x80/0056b3/ffffff?text=" alt="微信二维码" height="80" class="me-2">
+                    <img src="https://placehold.co/80x80/0056b3/ffffff?text=" alt="联系方式二维码" height="80">
+                </div> -->
                 </div>
             </div>
         </div>
@@ -148,20 +248,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <a href="#">网站首页</a>
-                    <a href="#">关于祥盈</a>
-                    <a href="#">产品中心</a>
-                    <a href="#">企业形象</a>
-                    <a href="#">厂房设备</a>
-                    <a href="#">荣誉资质</a>
-                    <a href="#">新闻中心</a>
-                    <a href="#">在线留言</a>
-                    <a href="#">联系我们</a>
+                    <a href="index.html" data-lang="nav-home">首页</a>
+                    <a href="about.html" data-lang="nav-about">关于我们</a>
+                    <a href="products.html" data-lang="nav-products">产品中心</a>
+                    <a href="honors.html" data-lang="nav-honors">荣誉资质</a>
+                    <a href="contact.html" data-lang="nav-contact">联系我们</a>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-12 text-center">
-                    <small>Copyright © 东莞市祥盈金属制品有限公司 粤ICP备: 320765</small>
+                    <small>Copyright ©珠海华实科技有限公司</small>
                 </div>
             </div>
         </div>
@@ -170,4 +266,5 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/language.js"></script>
 </body>
-</html> 
+
+</html>

@@ -13,25 +13,87 @@ body {
 /* 导航栏样式 */
 .navbar {
     padding: 0.5rem 0;
-    background-color: var(--primary-color) !important;
+    background: rgba(0, 86, 179) !important;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
 }
 
 .navbar-brand img {
     max-height: 40px;
 }
 
+.navbar .navbar-brand {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: 2px;
+    padding-right: 2rem;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
 .navbar .nav-link {
-    color: white !important;
-    font-size: 16px;
-    padding: 0.8rem 1rem !important;
+    position: relative;
+    color: #fff !important;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 0.8rem 1.2rem !important;
+    background: none !important;
+    border: none;
+    transition: color 0.2s;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    width: 0;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link.active::after,
+.navbar .nav-link:hover::after {
+    width: 60%;
+    background: #fff;
 }
 
 .navbar .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffe082 !important;
 }
 
-.navbar .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+/* 语言切换按钮美化 */
+.navbar .btn[data-lang="btn-lang"] {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 15px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.85);
+    color: var(--primary-color) !important;
+    border: none;
+    border-radius: 20px;
+    padding: 0.4em 1.2em;
+    box-shadow: 0 2px 8px rgba(0,86,179,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+.navbar .btn[data-lang="btn-lang"]:hover {
+    background: var(--primary-color);
+    color: #fff !important;
+}
+.navbar .btn[data-lang="btn-lang"]::before {
+    content: '\1F310'; /* 地球图标 */
+    font-size: 1.1em;
+    margin-right: 0.3em;
 }
 
 /* 轮播图样式 */
@@ -40,16 +102,61 @@ body {
 }
 
 .carousel-item img {
-    object-fit: cover;
+    object-fit: contain;
     height: 100%;
     width: 100%;
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    border-radius: 10px;
+    background: rgba(30, 44, 80, 0.25);
+    /* backdrop-filter: blur(8px); */
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 2.5rem 3rem;
     text-align: center;
+    left: 50%;
+    /* top: 50%; */
+    transform: translateX(-50%);
+    width: 60%;
+    position: absolute;
+    min-width: 320px;
+    max-width: 90vw;
+    margin-bottom: 4rem;
+}
+
+.carousel-caption h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 4px 24px rgba(0,86,179,0.25), 0 1px 0 #222;
+    margin-bottom: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.carousel-caption p {
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.carousel-caption .btn {
+    background: linear-gradient(90deg, #0056b3 0%, #3a8dde 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 0.7em 2.2em;
+    box-shadow: 0 4px 16px rgba(0,86,179,0.18);
+    transition: background 0.25s, transform 0.18s, box-shadow 0.18s;
+}
+
+.carousel-caption .btn:hover {
+    background: linear-gradient(90deg, #3a8dde 0%, #0056b3 100%);
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(0,86,179,0.22);
 }
 
 /* 标题样式 */
@@ -159,23 +266,25 @@ body {
 }
 
 .honor-item img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
+    height: 300px;
+    object-fit: fill;
+    width: 100%;
+    background-color: #f8f9fa;
     padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-}
-
-.honor-item img:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .honor-item h5 {
     margin-top: 1rem;
     color: var(--primary-color);
     font-weight: bold;
+}
+
+.honor-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    border-radius: 4px;
 }
 
 /* 联系我们样式 */
@@ -325,7 +434,21 @@ footer a:hover {
     }
     
     .carousel-caption {
-        padding: 1rem;
+        padding: 1.2rem 0.8rem;
+        min-width: 0;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+    
+    .carousel-caption .btn {
+        font-size: 1rem;
+        padding: 0.5em 1.2em;
     }
     
     .about-section {
@@ -336,5 +459,173 @@ footer a:hover {
         width: 80px;
         height: 80px;
         margin: 10px;
+    }
+}
+
+/* 合作流程样式 */
+.cooperation-process {
+    background-color: #f8f9fa;
+}
+
+.process-timeline {
+    padding: 40px 0;
+    position: relative;
+}
+
+.process-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0, 86, 179, 0.1) 0%, rgba(0, 86, 179, 0.3) 50%, rgba(0, 86, 179, 0.1) 100%);
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.process-item {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    padding: 20px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.process-item:hover {
+    transform: translateY(-5px);
+}
+
+.process-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 10px rgba(0, 86, 179, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.process-icon svg {
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+}
+
+.process-item:hover .process-icon {
+    background: #0056b3;
+    box-shadow: 0 0 0 10px rgba(0, 86, 179, 0.2);
+}
+
+.process-item:hover .process-icon svg {
+    fill: #fff;
+    transform: scale(1.1);
+}
+
+.process-item:hover h5 {
+    color: #0056b3;
+}
+
+.process-item h5 {
+    margin: 0;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .process-line {
+        display: none;
+    }
+    .process-item {
+        margin-bottom: 20px;
+    }
+}
+
+/* 公司实力样式 */
+.company-strength {
+    background-color: #fff;
+}
+
+.strength-intro h2 {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* .strength-intro h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+} */
+
+.strength-intro h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.strength-intro p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .strength-intro {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .strength-intro h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* 移动端菜单优化 */
+@media (max-width: 991.98px) {
+    .navbar .navbar-brand {
+        font-size: 20px;
+        padding-right: 1rem;
+    }
+    .navbar .nav-link {
+        font-size: 16px;
+        padding: 0.7rem 1rem !important;
+    }
+    .navbar .btn[data-lang="btn-lang"] {
+        padding: 0.4em 1em;
+        font-size: 14px;
+    }
+    .navbar-collapse {
+        background: rgba(0,86,179,0.97);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        border-radius: 0 0 12px 12px;
+        margin-top: 0.5rem;
+        transition: all 0.3s;
     }
 } 

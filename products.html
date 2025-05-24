@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh">
+
+<!-- 在<head>里最前面加 -->
+<script>
+    (function () {
+        var lang = localStorage.getItem('lang') || 'zh';
+        if (lang === 'en') {
+            document.documentElement.setAttribute('lang', 'en');
+            document.body && (document.body.style.visibility = 'hidden');
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.setLang) setLang('en');
+            });
+        } else {
+            document.documentElement.setAttribute('lang', 'zh');
+            document.body && (document.body.style.visibility = 'hidden');
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.setLang) setLang('zh');
+            });
+        }
+    })();
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>产品中心 - 祥盈金属制品</title>
+    <title>产品中心 - 华实科技金属制品</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
+<body style="visibility:hidden">
     <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="祥盈金属制品" height="40">
-            </a>
+            <!-- <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="华实科技金属制品" height="40">
+            </a> -->
+            <div class="navbar-brand" style="font-size: 20px; font-weight: bold;">华实科技</div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,7 +66,7 @@
     </nav>
 
     <!-- 产品中心banner -->
-    <div class="page-banner" style="background-image: url('images/product-banner.jpg');">
+    <div class="page-banner" style="background-image: url('./pic/company/3.jpg');">
         <h1 data-lang="products-title">产品中心</h1>
     </div>
 
@@ -52,8 +75,8 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">您的位置: 首页</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">产品中心</li>
+                    <li class="breadcrumb-item"><a href="index.html" data-lang="breadcrumb-home">首页</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-lang="breadcrumb-products">产品中心</li>
                 </ol>
             </nav>
         </div>
@@ -65,109 +88,133 @@
             <!-- 产品分类侧边栏 -->
             <div class="col-md-3 mb-4">
                 <div class="list-group">
-                    <div class="list-group-item list-group-item-primary fw-bold">所有分类</div>
-                    <a href="#" class="list-group-item list-group-item-action active" data-category="all" data-lang="products-cat-all">全部</a>
-                    <a href="#" class="list-group-item list-group-item-action" data-category="cnc" data-lang="products-cat-cnc">CNC加工系列</a>
-                    <a href="#" class="list-group-item list-group-item-action" data-category="mold" data-lang="products-cat-mold">车铣件系列</a>
-                    <a href="#" class="list-group-item list-group-item-action" data-category="precision" data-lang="products-cat-precision">精密零件系列</a>
-                    <a href="#" class="list-group-item list-group-item-action" data-category="machine" data-lang="products-cat-machine">机械零件系列</a>
-                    <a href="#" class="list-group-item list-group-item-action" data-category="other" data-lang="products-cat-other">其他加工</a>
+                    <div class="list-group-item list-group-item-primary fw-bold" data-lang="category-all">所有分类</div>
+                    <a href="#" class="list-group-item list-group-item-action active" data-category="all"
+                        data-lang="category-all">全部</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-category="car"
+                        data-lang="category-car">车载冰箱系列</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-category="medical"
+                        data-lang="category-medical">医疗领域</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-category="equipment"
+                        data-lang="category-equipment">智能装备领域</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-category="energy"
+                        data-lang="category-energy">新能源领域</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-category="ship"
+                        data-lang="category-ship">无人艇领域</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-category="airline"
+                        data-lang="category-airline">航天领域</a>
                 </div>
             </div>
 
             <!-- 产品展示 -->
             <div class="col-md-9">
                 <div class="row product-list">
-                    <div class="col-md-4 mb-4 product-item" data-category="cnc">
+                    <!-- 车载冰箱系列 -->
+                    <div class="col-md-4 mb-4 product-item" data-category="car">
                         <div class="card h-100">
-                            <img src="images/product1.jpg" class="card-img-top" alt="CNC加工零件">
+                            <img src="./pic/car/立式冰箱.jpg" class="card-img-top" alt="立式冰箱">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product1-title">CNC机床加工</h5>
+                                <h5 class="card-title" data-lang="car-vertical">立式冰箱</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="mold">
+                    <div class="col-md-4 mb-4 product-item" data-category="car">
                         <div class="card h-100">
-                            <img src="images/product2.jpg" class="card-img-top" alt="车铣件">
+                            <img src="./pic/car/卧式冰箱.jpg" class="card-img-top" alt="卧式冰箱">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product2-title">专业CNC加工</h5>
+                                <h5 class="card-title" data-lang="car-horizontal">卧式冰箱</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="precision">
+
+                    <!-- 医疗领域 -->
+                    <div class="col-md-4 mb-4 product-item" data-category="medical">
                         <div class="card h-100">
-                            <img src="images/product3.jpg" class="card-img-top" alt="精密零件">
+                            <img src="./pic/medical/搬运机器人支撑件.jpg" class="card-img-top" alt="搬运机器人支撑件">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product3-title">精密五金零件加工</h5>
+                                <h5 class="card-title" data-lang="medical-robot">搬运机器人支撑件</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="cnc">
+                    <div class="col-md-4 mb-4 product-item" data-category="medical">
                         <div class="card h-100">
-                            <img src="images/product4.jpg" class="card-img-top" alt="CNC加工零件">
+                            <img src="./pic/medical/机器人空净柜.jpg" class="card-img-top" alt="机器人空净柜">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product4-title">CNC加工支架</h5>
+                                <h5 class="card-title" data-lang="medical-cabinet">机器人空净柜</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="mold">
+                    <div class="col-md-4 mb-4 product-item" data-category="medical">
                         <div class="card h-100">
-                            <img src="images/product5.jpg" class="card-img-top" alt="模具制品">
+                            <img src="./pic/medical/空净机器人支架.jpg" class="card-img-top" alt="空净机器人支架">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product5-title">模具CNC加工</h5>
+                                <h5 class="card-title" data-lang="medical-bracket">空净机器人支架</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="precision">
+
+                    <!-- 智能装备领域 -->
+                    <div class="col-md-4 mb-4 product-item" data-category="equipment">
                         <div class="card h-100">
-                            <img src="images/product6.jpg" class="card-img-top" alt="精密零件">
+                            <img src="./pic/equipment/电力五防控制柜.jpg" class="card-img-top" alt="电力五防控制柜">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product6-title">CNC加工零部件</h5>
+                                <h5 class="card-title" data-lang="equipment-cabinet">电力五防控制柜</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="machine">
+
+                    <!-- 新能源领域 -->
+                    <div class="col-md-4 mb-4 product-item" data-category="energy">
                         <div class="card h-100">
-                            <img src="images/product7.jpg" class="card-img-top" alt="机械零件">
+                            <img src="./pic/energy/新能源电池盒.jpg" class="card-img-top" alt="新能源电池盒">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product7-title">精密零件加工</h5>
+                                <h5 class="card-title" data-lang="energy-box">新能源电池盒</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="other">
+                    <div class="col-md-4 mb-4 product-item" data-category="energy">
                         <div class="card h-100">
-                            <img src="images/product8.jpg" class="card-img-top" alt="其他加工">
+                            <img src="./pic/energy/新能源级片卷.jpg" class="card-img-top" alt="新能源级片卷">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product8-title">精密零件加工</h5>
+                                <h5 class="card-title" data-lang="energy-roll">新能源级片卷</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4 product-item" data-category="other">
+
+                    <!-- 无人艇领域 -->
+                    <div class="col-md-4 mb-4 product-item" data-category="ship">
                         <div class="card h-100">
-                            <img src="images/product9.jpg" class="card-img-top" alt="其他加工">
+                            <img src="./pic/ship/户外电力箱.jpg" class="card-img-top" alt="户外电力箱">
                             <div class="card-body text-center">
-                                <h5 class="card-title" data-lang="product9-title">精密零配件加工</h5>
+                                <h5 class="card-title" data-lang="ship-box">户外电力箱</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 航天领域 -->
+                    <div class="col-md-4 mb-4 product-item" data-category="airline">
+                        <div class="card h-100">
+                            <img src="./pic/airline/航天散热器.jpg" class="card-img-top" alt="航天散热器">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" data-lang="airline-radiator">航天散热器</h5>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 分页 -->
-                <nav aria-label="产品分页" class="mt-4">
+                <!-- <nav aria-label="产品分页" class="mt-4">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">上一页</a>
+                            <a class="page-link" href="#" tabindex="-1" data-lang="pagination-prev">上一页</a>
                         </li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
                         <li class="page-item">
-                            <a class="page-link" href="#">下一页</a>
+                            <a class="page-link" href="#" data-lang="pagination-next">下一页</a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
         </div>
     </div>
@@ -177,17 +224,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p data-lang="footer-contact">联系方式：</p>
-                    <p>Tel: 0769-22905373</p>
-                    <p>Email: dgxiangying@163.com</p>
-                    <p>网址: www.dgxyjs.com</p>
+                    <p data-lang="footer-contact">联系方式：***</p>
+                    <p>Tel: ***</p>
+                    <p>Email: ***</p>
+                    <p>网址: ***</p>
+                    <p data-lang="footer-address">地址：华实科技</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <p data-lang="footer-address">地址：东莞市东城区牛山外经工业园南兴路8号</p>
-                    <div class="mt-3">
+
+                    <!-- <div class="mt-3">
                         <img src="https://placehold.co/80x80/0056b3/ffffff?text=" alt="微信二维码" height="80" class="me-2">
                         <img src="https://placehold.co/80x80/0056b3/ffffff?text=" alt="联系方式二维码" height="80">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -198,20 +246,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <a href="#">网站首页</a>
-                    <a href="#">关于祥盈</a>
-                    <a href="#">产品中心</a>
-                    <a href="#">企业形象</a>
-                    <a href="#">厂房设备</a>
-                    <a href="#">荣誉资质</a>
-                    <a href="#">新闻中心</a>
-                    <a href="#">在线留言</a>
-                    <a href="#">联系我们</a>
+                    <a href="index.html" data-lang="nav-home">首页</a>
+                    <a href="about.html" data-lang="nav-about">关于我们</a>
+                    <a href="products.html" data-lang="nav-products">产品中心</a>
+                    <a href="honors.html" data-lang="nav-honors">荣誉资质</a>
+                    <a href="contact.html" data-lang="nav-contact">联系我们</a>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-12 text-center">
-                    <small>Copyright © 东莞市祥盈金属制品有限公司 粤ICP备: 320765</small>
+                    <small>Copyright ©珠海华实科技有限公司</small>
                 </div>
             </div>
         </div>
@@ -221,7 +265,7 @@
     <script src="js/language.js"></script>
     <script>
         // 产品分类筛选
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const filterButtons = document.querySelectorAll('.list-group-item-action');
             const products = document.querySelectorAll('.product-item');
 
@@ -247,4 +291,5 @@
         });
     </script>
 </body>
-</html> 
+
+</html>
